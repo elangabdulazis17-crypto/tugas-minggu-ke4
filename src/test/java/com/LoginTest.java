@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.example.appium.driver.DriverSingletown;
@@ -31,6 +33,8 @@ public class LoginTest {
         driver = DriverSingletown.getDriver();
         loginPage = new LoginPage(driver);
     }
+
+     @BeforeMethod
     public void reset() {
        // Paksa aplikasi balik ke layar awal sebelum tiap tes
     try {
@@ -43,6 +47,12 @@ public class LoginTest {
     }
     loginPage = new LoginPage(driver);
 }
+    @AfterClass
+    public void tearDown() {
+        // Close the Appium driver
+        DriverSingletown.closeObjectInstance();
+
+    }
 
     @Test
     public void loginTest() {
@@ -74,10 +84,30 @@ public class LoginTest {
 
     }
 
+    @Test
+    public void COHigh(){
+        loginPage.login("standard_user","secret_sauce");
+        ProductPage productPage = new ProductPage(driver);
+        productPage.sortProduct("high");
+
+        productPage.clickAddToCart();
+        productPage.goToCheckout();
+
+        CheckOutPage checkOutPage = new CheckOutPage(driver);
+        checkOutPage.klikTombolCheckout();
+
+        checkOutPage.inputInformasi("elang", "Abdul Azis", "24567");
+        checkOutPage.finishCheckout();
+
+        String actualMassage = checkOutPage.getThankYouMessage();
+        Assert.assertEquals("THANK YOU FOR YOU ORDER", actualMassage);
+
+    }
+
 
 @Test
 public void testLoginWrongPassword() {
-   loginPage.login("standard_user", "salah_password");
+   loginPage.login("locked_out_user", "salah_password");
     
     String errorMsg = loginPage.getErrorMessage();
     
@@ -91,7 +121,7 @@ public void testLoginWrongPassword() {
 
     ProductPage productPage = new ProductPage(driver);
 
-    loginPage.login("standard_user", "secret_sauce");
+    loginPage.login("problem_user", "secret_sauce");
 
     // 1. Flow sampai ke halaman checkout (asumsi sudah ada barang di cart)
     productPage.clickAddToCart();

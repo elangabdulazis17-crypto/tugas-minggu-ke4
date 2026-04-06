@@ -47,6 +47,8 @@ public class ProductPage {
         }
     }
 
+  
+
  
     public void clickAddToCart() {
         firstAddToCartBtn.click();
