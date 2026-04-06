@@ -4,6 +4,8 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -44,6 +46,9 @@ public class CheckOutPage {
         PageFactory.initElements(new AppiumFieldDecorator(driver,Duration.ofSeconds(10)), this);
     }
 
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView")
+    private WebElement errorContainer;
+
     public void inputInformasi(String firstName, String lastName, String zip) {
         
         firstNameField.sendKeys(firstName);
@@ -68,6 +73,17 @@ public class CheckOutPage {
 
     public String getThankYouMessage() {
         return thankYouMessage.getText();
+    }
+
+    public void clickContinue() {
+    continueButton.click();
+}
+    public String getErrorMessage() {
+    // Tambahkan wait di sini agar stabil
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOf(errorContainer));
+    
+    return errorContainer.getText();
     }
 
 }

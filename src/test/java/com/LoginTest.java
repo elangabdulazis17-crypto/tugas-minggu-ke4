@@ -84,5 +84,31 @@ public void testLoginWrongPassword() {
     // Pakai assertTrue dengan bantuan toLowerCase() supaya gak sensitif huruf besar/kecil
     Assert.assertTrue(errorMsg.toLowerCase().contains("match"), 
         "Pesan error salah! Munculnya: " + errorMsg);
-}
+    }
+
+    @Test
+    public void testCheckoutWithEmptyForm() {
+
+    ProductPage productPage = new ProductPage(driver);
+
+    loginPage.login("standard_user", "secret_sauce");
+
+    // 1. Flow sampai ke halaman checkout (asumsi sudah ada barang di cart)
+    productPage.clickAddToCart();
+    productPage.goToCheckout();
+    
+    CheckOutPage checkoutPage = new CheckOutPage(driver);
+    checkoutPage.klikTombolCheckout(); // Masuk ke halaman "Your Information"
+
+    // 2. Langsung klik Continue tanpa isi data
+    checkoutPage.clickContinue();
+
+    // 3. Validasi pesan error
+    String error = checkoutPage.getErrorMessage();
+    System.out.println("Error yang muncul: " + error);
+    
+    // Asersi: Pastikan errornya spesifik soal First Name
+    Assert.assertTrue(error.contains("First Name is required"), 
+        "Pesan error salah! Munculnya: " + error);
+    }
 }
