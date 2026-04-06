@@ -1,7 +1,11 @@
 package com.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -20,9 +24,13 @@ public class LoginPage {
     @AndroidFindBy(accessibility = "test-LOGIN")
     private WebElement loginButton;
 
-    // Tambahkan ini agar error di LoginTest hilang
-    @AndroidFindBy(accessibility = "test-Error message") 
+    
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView")
     private WebElement errorContainer;
+
+    
+
+   
 
     public LoginPage(AppiumDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -33,6 +41,10 @@ public class LoginPage {
         loginButton.click();
     }
     public String getErrorMessage() {
-        return errorContainer.getText();
+         // Tambahkan wait di sini agar stabil
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOf(errorContainer));
+    
+    return errorContainer.getText();
     }
 }

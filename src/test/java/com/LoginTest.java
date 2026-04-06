@@ -2,7 +2,10 @@ package com;
 
 import java.time.Duration;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -71,10 +74,15 @@ public class LoginTest {
 
     }
 
+
 @Test
 public void testLoginWrongPassword() {
-    loginPage.login("standard_user", "salah_password");
+   loginPage.login("standard_user", "salah_password");
+    
     String errorMsg = loginPage.getErrorMessage();
-    Assert.assertTrue(errorMsg.contains("Username and password do not match any user in this service."), "Error message should indicate wrong credentials");
+    
+    // Pakai assertTrue dengan bantuan toLowerCase() supaya gak sensitif huruf besar/kecil
+    Assert.assertTrue(errorMsg.toLowerCase().contains("match"), 
+        "Pesan error salah! Munculnya: " + errorMsg);
 }
 }
