@@ -53,8 +53,7 @@ public class CheckOutPage {
     }
 
      public void klikTombolCheckout() {
-    // Jika tidak ketemu, gunakan scroll yang saya berikan sebelumnya
-    btnCheckoutSebenarnya.click();
+    btnCheckoutSebenarnya.click();// Jika tidak ketemu, gunakan scroll yang saya berikan sebelumnya
 }
     public void finishCheckout() {
     // 1. Scroll ke bawah sampai tombol FINISH kelihatan
