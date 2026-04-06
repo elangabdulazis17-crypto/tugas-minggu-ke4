@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 52.434 s <<< FAILURE! - in TestSuite
+Kurang(com.CalculatorTest)  Time elapsed: 10.066 s  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.chained({AppiumBy.id: com.google.android.calculator:id/digit_1})
+	at com.CalculatorTest.Kurang(CalculatorTest.java:41)
+Caused by: org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@4303b7f0
+(tried for 1 second with 500 milliseconds interval)
+	at com.CalculatorTest.Kurang(CalculatorTest.java:41)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.chained({AppiumBy.id: com.google.android.calculator:id/digit_1})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.41.0', revision: '9fc754f'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.2'
+Driver info: driver.version: RemoteWebDriver
+	at com.CalculatorTest.Kurang(CalculatorTest.java:41)
+
+testAddition(com.CalculatorTest)  Time elapsed: 10.055 s  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.chained({AppiumBy.id: com.google.android.calculator:id/digit_5})
+	at com.CalculatorTest.testAddition(CalculatorTest.java:35)
+Caused by: org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@5f78de22
+(tried for 1 second with 500 milliseconds interval)
+	at com.CalculatorTest.testAddition(CalculatorTest.java:35)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.chained({AppiumBy.id: com.google.android.calculator:id/digit_5})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.41.0', revision: '9fc754f'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.2'
+Driver info: driver.version: RemoteWebDriver
+	at com.CalculatorTest.testAddition(CalculatorTest.java:35)
+
+testcomplate(com.LoginTest)  Time elapsed: 11.241 s  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.chained({AppiumBy.accessibilityId: test-Password})
+	at com.LoginTest.testcomplate(LoginTest.java:53)
+Caused by: org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@4a29f290
+(tried for 10 seconds with 500 milliseconds interval)
+	at com.LoginTest.testcomplate(LoginTest.java:53)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.chained({AppiumBy.accessibilityId: test-Password})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.41.0', revision: '9fc754f'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.2'
+Driver info: driver.version: RemoteWebDriver
+	at com.LoginTest.testcomplate(LoginTest.java:53)
+

@@ -1,0 +1,10 @@
+com\example\appium\driver\strategies\AndroidManager.class
+com\pages\LoginPage.class
+com\pages\CalculatorPage.class
+com\example\appium\driver\strategies\DriverStragies.class
+com\example\appium\driver\strategies\DriverStrategiesImplementor.class
+com\example\appium\driver\strategies\IOSManager.class
+com\pages\CheckOutPage.class
+com\pages\ProductPage.class
+com\example\appium\App.class
+com\example\appium\driver\DriverSingletown.class
